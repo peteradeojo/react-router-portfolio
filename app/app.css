@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+html,
+body {
+  @apply bg-[#fdfdce] dark:bg-blue-950;
+
+  @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+  }
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+@layer components {
+  .inline-link {
+    @apply dark:text-blue-300 text-blue-700 hover:underline;
+  }
+
+  h3 {
+    @apply tracking-widest;
+  }
+}
