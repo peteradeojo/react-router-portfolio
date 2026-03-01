@@ -2,6 +2,10 @@ import Container from "~/components/Container";
 import type { Route } from "./+types/home";
 import { Link } from "react-router";
 import { FaExternalLinkAlt } from "react-icons/fa";
+import { Canvas } from "@react-three/fiber";
+import { PresentationControls, SpotLight } from "@react-three/drei";
+import CryptoBro from "../models/Crypto Bro";
+import CheckeredFloor from "~/models/Checkered Floor Tile 8x8";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -11,6 +15,19 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const controlsConfig = {
+    snap: true,
+    speed: 1,
+    zoom: 1,
+    polar: [-Math.PI, Math.PI],
+    // azimuth: [-Infinity, Infinity],
+    config: {
+      mass: 1,
+      tension: 0,
+      friction: 26,
+    },
+  };
+
   return (
     <>
       <Container>
@@ -38,7 +55,22 @@ export default function Home() {
           </div>
 
           {/* Headshot */}
-          <div className="hidden md:block rounded-lg bg-gray-100 dark:bg-gray-700 transform hover:scale-110 duration-200"></div>
+          <div className="p-3 h-72">
+            <Canvas id="profile">
+              <ambientLight intensity={Math.PI} />
+
+              <PresentationControls {...(controlsConfig as any)}>
+                <group>
+                  <CryptoBro
+                    animations={["Walk"]}
+                    position={[0, -2, 0.5]}
+                    scale={2}
+                  />
+                  <CheckeredFloor position={[1.8, -2, -1]} scale={4} />
+                </group>
+              </PresentationControls>
+            </Canvas>
+          </div>
         </div>
 
         {/* Projects & Links */}
@@ -176,7 +208,14 @@ export default function Home() {
               </p>
             </div>
 
-            <div></div>
+            <div>
+              <p></p>
+              <p>
+                Checkered Floor Tile 8x8 by TRASH - TANUKI [CC-BY]
+                (https://creativecommons.org/licenses/by/3.0/) via Poly Pizza
+                (https://poly.pizza/m/0hD35qDhDT0)
+              </p>
+            </div>
           </div>
         </section>
       </Container>
