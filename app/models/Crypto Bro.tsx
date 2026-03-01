@@ -27,8 +27,6 @@ export default function CryptoBro(props) {
         actions["Armature|Walk"].play();
       }
     }
-
-
   }, [modelAction, actions]);
 
   const toggleAnimation = () => {

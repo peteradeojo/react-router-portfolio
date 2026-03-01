@@ -6,6 +6,7 @@ import { Canvas } from "@react-three/fiber";
 import { PresentationControls, SpotLight } from "@react-three/drei";
 import CryptoBro from "../models/Crypto Bro";
 import CheckeredFloor from "~/models/Checkered Floor Tile 8x8";
+import { useMediaQuery } from "react-responsive";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -27,6 +28,8 @@ export default function Home() {
       friction: 26,
     },
   };
+
+  const isMobile = useMediaQuery({query: "(max-width: 512px)"});
 
   return (
     <>
@@ -59,7 +62,10 @@ export default function Home() {
             <Canvas id="profile">
               <ambientLight intensity={Math.PI} />
 
-              <PresentationControls {...(controlsConfig as any)}>
+              <PresentationControls
+                {...(controlsConfig as any)}
+                enabled={isMobile == false}
+              >
                 <group>
                   <CryptoBro
                     animations={["Walk"]}
