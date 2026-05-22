@@ -3,7 +3,7 @@ import { FaGithub, FaLink } from "react-icons/fa";
 
 const links = [
   { to: "/", label: <>Home</> },
-  { to: "/about", label: <>About</> },
+  // { to: "/about", label: <>About</> },
   { to: "/#projects", label: <>Projects</> },
 ];
 

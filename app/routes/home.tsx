@@ -90,8 +90,8 @@ export default function Home() {
           </h3>
           <div className="grid md:grid-cols-3 gap-4">
             {projects.map((project, i) => (
-              <div
-                className="p-2 rounded-sm border dark:border-0 dark:bg-gray-700 grid gap-y-4"
+              <Link to={project.to}
+                className="p-2 rounded-sm border dark:border-0 dark:bg-white/10 duration-300 hover:scale-110 hover:backdrop-brightness-[2] hover:backdrop-blur-sm text-white grid gap-y-4"
                 key={project.name}
               >
                 <p className="text-xl">{project.name}</p>
@@ -99,7 +99,7 @@ export default function Home() {
                 <Link className="text-sm inline-link self-end" to={project.to}>
                   View Case Study &rarr;
                 </Link>
-              </div>
+              </Link>
             ))}
           </div>
 
